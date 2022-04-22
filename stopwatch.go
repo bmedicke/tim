@@ -14,16 +14,17 @@ func stopwatch(quietFlag bool) {
 	screen := setupScreen()
 
 	for {
-		screen.Show() // update screen.
 		if screen.HasPendingEvent() {
 			handleStopwatchEvent(screen)
 		} else {
 			if !quietFlag {
+				screen.Show() // update screen.
 				duration := fmt.Sprintf("%s", time.Now().Sub(start))
 				drawText(screen, 0, 1, 30, 2, duration)
 				drawText(screen, 0, 0, 30, 1, stopwatchInstructions)
 			}
 		}
+		time.Sleep(time.Millisecond * 50)
 	}
 }
 
