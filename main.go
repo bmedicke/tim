@@ -16,10 +16,11 @@ func main() {
 	// register command line flags:
 	stopwatchMode := flag.Bool("s", false, "stopwatch mode")
 	countdownMode := flag.Bool("c", false, "countdown mode")
+	quietFlag := flag.Bool("q", false, "quite flag, reduce output")
 	flag.Parse()
 
 	if *stopwatchMode {
-		stopwatch()
+		stopwatch(*quietFlag)
 	} else if *countdownMode {
 		fmt.Println("countdown mode not yet implemented")
 	} else {

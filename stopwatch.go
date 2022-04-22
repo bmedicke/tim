@@ -10,7 +10,7 @@ import (
 
 const stopwatchInstructions = "press q or esc to stop"
 
-func stopwatch() {
+func stopwatch(quietFlag bool) {
 	screen := setupScreen()
 
 	for {
@@ -18,9 +18,11 @@ func stopwatch() {
 		if screen.HasPendingEvent() {
 			handleStopwatchEvent(screen)
 		} else {
-			duration := fmt.Sprintf("%s", time.Now().Sub(start))
-			drawText(screen, 0, 0, 30, 1, stopwatchInstructions)
-			drawText(screen, 0, 1, 30, 2, duration)
+			if !quietFlag {
+				duration := fmt.Sprintf("%s", time.Now().Sub(start))
+				drawText(screen, 0, 1, 30, 2, duration)
+				drawText(screen, 0, 0, 30, 1, stopwatchInstructions)
+			}
 		}
 	}
 }
