@@ -4,67 +4,37 @@ import (
 	"flag"
 	"fmt"
 	"log"
-	"os"
 	"time"
 
 	"github.com/gdamore/tcell/v2"
 )
 
-func main() {
-	// keep track of start time:
-	start := time.Now()
+// keep track of start time:
+var start = time.Now()
 
+func main() {
 	// register command line flags:
 	stopwatchMode := flag.Bool("s", false, "stopwatch mode")
 	countdownMode := flag.Bool("c", false, "countdown mode")
-
 	flag.Parse()
 
 	if *stopwatchMode {
-		stopwatch(start)
+		stopwatch()
 	} else if *countdownMode {
-		fmt.Println("countdown")
+		fmt.Println("countdown mode not yet implemented")
 	} else {
 		flag.PrintDefaults()
 	}
 }
 
-func stopwatch(start time.Time) {
-	s := createScreen()
-
-	// start event loop:
-	for {
-		s.Show()            // update screen.
-		ev := s.PollEvent() // fetch event.
-
-		// handle event:
-		switch ev := ev.(type) {
-		case *tcell.EventKey:
-			if ev.Rune() == 'q' || ev.Key() == tcell.KeyEsc {
-				// stop screen so the log message persist:
-				s.Fini()
-				// calculate and log timedelta:
-				fmt.Println(time.Now().Sub(start))
-				// terminate the program:
-				os.Exit(0)
-			}
-		case *tcell.EventResize:
-			s.Sync()
-			// print instructions:
-			instruction := "stopwatch running, press escape or q to quit"
-			fmt.Println(instruction)
-		}
-	}
-}
-
-func createScreen() tcell.Screen {
-	// create and initialize new screen:
-	s, err := tcell.NewScreen()
+// create and initialize new screen:
+func setupScreen() tcell.Screen {
+	screen, err := tcell.NewScreen()
 	if err != nil {
 		log.Fatalf("%+v", err)
 	}
-	if err := s.Init(); err != nil {
+	if err := screen.Init(); err != nil {
 		log.Fatalf("%+v", err)
 	}
-	return s
+	return screen
 }
