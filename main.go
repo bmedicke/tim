@@ -1,6 +1,7 @@
 package main
 
 import (
+	"flag"
 	"fmt"
 	"log"
 	"os"
@@ -12,7 +13,20 @@ import (
 func main() {
 	// keep track of start time:
 	start := time.Now()
-	stopwatch(start)
+
+	// register command line flags:
+	stopwatchMode := flag.Bool("s", false, "stopwatch mode")
+	countdownMode := flag.Bool("c", false, "countdown mode")
+
+	flag.Parse()
+
+	if *stopwatchMode {
+		stopwatch(start)
+	} else if *countdownMode {
+		fmt.Println("countdown")
+	} else {
+		flag.PrintDefaults()
+	}
 }
 
 func stopwatch(start time.Time) {

@@ -2,12 +2,18 @@
 
 Tim is a (not yet) multifunction command line timer with the following features:
 
-* countdown
+* stopwatch
 
 ## installation
 
 ```sh
 go install github.com/bmedicke/tim@latest
+```
+
+## usage
+
+```sh
+tim -s # stopwatch mode.
 ```
 
 ## development
