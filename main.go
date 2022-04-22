@@ -16,14 +16,7 @@ func main() {
 }
 
 func stopwatch(start time.Time) {
-	// create and initialize new screen:
-	s, err := tcell.NewScreen()
-	if err != nil {
-		log.Fatalf("%+v", err)
-	}
-	if err := s.Init(); err != nil {
-		log.Fatalf("%+v", err)
-	}
+	s := createScreen()
 
 	// start event loop:
 	for {
@@ -48,4 +41,16 @@ func stopwatch(start time.Time) {
 			fmt.Println(instruction)
 		}
 	}
+}
+
+func createScreen() tcell.Screen {
+	// create and initialize new screen:
+	s, err := tcell.NewScreen()
+	if err != nil {
+		log.Fatalf("%+v", err)
+	}
+	if err := s.Init(); err != nil {
+		log.Fatalf("%+v", err)
+	}
+	return s
 }
