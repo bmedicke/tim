@@ -21,7 +21,7 @@ func stopwatch() {
 			drawText(screen, 0, 1, 30, 2, duration)
 			drawText(screen, 0, 0, 30, 1, stopwatchInstructions)
 		}
-		time.Sleep(time.Millisecond * 50)
+		time.Sleep(redrawDelay)
 	}
 }
 

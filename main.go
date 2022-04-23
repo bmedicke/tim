@@ -9,13 +9,13 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
-// keep track of start time:
-var start = time.Now()
-
 var (
+	start               = time.Now() // keep track of start time.
 	quietFlag           = flag.Bool("q", false, helpQuietFlag)
 	quitWithSuccessFlag = flag.Bool("x", false, helpQuitWithSuccess)
 )
+
+const redrawDelay = time.Millisecond * 50
 
 func main() {
 	// register command line flags for modes (exclusive):
