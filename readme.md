@@ -12,8 +12,18 @@ go install github.com/bmedicke/tim@latest
 
 ## usage
 
+* `-s` stopwatch mode
+* `-c` countdown mode
+* `-t` timer mode (counts up)
+* `-q` quite flag, surpresses output
+
+### `-s` stopwatch mode
+
 ```sh
-tim -s # stopwatch mode.
+# use return value:
+tim -s && echo yes || echo no
+# q returns 0.
+# ctrl-c return 127.
 ```
 
 ## development
