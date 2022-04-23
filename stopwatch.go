@@ -8,7 +8,7 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
-const stopwatchInstructions = "press q or esc to stop"
+const stopwatchInstructions = "q: quit, d: toggle display"
 
 func stopwatch() {
 	screen := setupScreen()
@@ -33,7 +33,7 @@ func handleStopwatchEvents(screen tcell.Screen) {
 		// process event:
 		switch ev := ev.(type) {
 		case *tcell.EventKey:
-			if ev.Rune() == 'q' || ev.Key() == tcell.KeyEsc {
+			if ev.Rune() == 'q' {
 				exitStopwatchWith(0, screen)
 			}
 			if ev.Rune() == 'd' {
