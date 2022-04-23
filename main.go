@@ -18,16 +18,21 @@ var (
 const redrawDelay = time.Millisecond * 50
 
 func main() {
+	const version = "v0.0.1"
+
 	// register command line flags for modes (exclusive):
 	countdownMode := flag.Bool("c", false, helpCountdownMode)
 	stopwatchMode := flag.Bool("s", false, helpStopwatchMode)
 	timerMode := flag.Bool("t", false, helpTimerMode)
 	helpMode := flag.Bool("h", false, helpHelpMode)
+	versionMode := flag.Bool("V", false, helpVersionMode)
 
 	flag.Parse()
 
 	if *helpMode {
 		flag.PrintDefaults()
+	} else if *versionMode {
+		fmt.Println(version)
 	} else if *stopwatchMode {
 		stopwatch()
 	} else if *countdownMode {
