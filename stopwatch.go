@@ -8,9 +8,8 @@ import (
 	"github.com/gdamore/tcell/v2"
 )
 
-const stopwatchInstructions = "q: quit, d: toggle display"
-
 func stopwatch() {
+	const stopwatchInstructions = "q: quit, d: toggle display"
 	screen := setupScreen()
 
 	go handleStopwatchEvents(screen)
