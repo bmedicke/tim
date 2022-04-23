@@ -18,7 +18,7 @@ var (
 const redrawDelay = time.Millisecond * 50
 
 func main() {
-	const version = "v0.0.1"
+	const version = "v0.0.2"
 
 	// register command line flags for modes (exclusive):
 	countdownMode := flag.Bool("c", false, helpCountdownMode)

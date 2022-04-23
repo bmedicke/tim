@@ -11,17 +11,17 @@ import (
 func stopwatch() {
 	const stopwatchInstructions = "q: quit, d: toggle display"
 	screen := setupScreen()
+	redrawTicker := time.NewTicker(redrawDelay)
 
 	go handleStopwatchEvents(screen)
 
-	for {
+	for range redrawTicker.C {
 		if !*quietFlag {
 			screen.Show() // update screen.
 			duration := fmt.Sprintf("%s", time.Now().Sub(start))
 			drawText(screen, 0, 1, 30, 2, duration)
 			drawText(screen, 0, 0, 30, 1, stopwatchInstructions)
 		}
-		time.Sleep(redrawDelay)
 	}
 }
 
