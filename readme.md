@@ -23,7 +23,7 @@ go install github.com/bmedicke/tim@latest
 # use return value:
 tim -s && echo yes || echo no
 # q returns 0.
-# ctrl-c return 127.
+# ctrl-c returns 127.
 ```
 
 ## development
