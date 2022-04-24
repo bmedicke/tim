@@ -1,6 +1,7 @@
 package main
 
 const (
+	instructions      = "q: quit, d: toggle display"
 	helpCountdownMode = `countdown mode:
 pressing q exits with 1,
 letting the timer run out exits with 0`
