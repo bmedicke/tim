@@ -20,10 +20,21 @@ go install github.com/bmedicke/tim@latest
 ### `-s` stopwatch mode
 
 ```sh
-# use return value:
+# using the return value:
 tim -s && echo yes || echo no
 # q returns 0.
 # ctrl-c returns 127.
+```
+
+### `-c` countdown mode
+
+```sh
+tim -c 10s
+tim -c 10h5m
+tim -c 1m1s # order does not matter.
+
+# using the return value:
+tim -c 10s && echo timer ran out || echo timer stopped early
 ```
 
 ## development
